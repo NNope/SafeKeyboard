@@ -1,10 +1,10 @@
-用于H5调用原生展示的自定义密码键盘。
-参考了这位大侠的仿招行的键盘，稍作了修改。[NHKeyboardPro](https://github.com/iFindTA/NHKeyboardPro)
+###用于H5调用原生展示的自定义密码键盘。参考了这位大侠的仿招行的键盘，稍作了修改。[NHKeyboardPro](https://github.com/iFindTA/NHKeyboardPro)
 
-###效果
+
+####效果
 ![1.gif](http://upload-images.jianshu.io/upload_images/810907-d1f4a2fc1dce81e5.gif?imageMogr2/auto-orient/strip)
 
-* ##结合webView使用的方式
+* ## 结合webView使用的方式
 
 ```objc
 
@@ -30,7 +30,7 @@
 
 ```
 
-* ##普通的使用方式
+* ## 普通的使用方式
 我用了一个自定义了textField管理了一些功能，再用一个KBInputView来管理弹出。如果原生客户端直接使用的话，可以直接用keyboard。
 
 ##SafeKBInputView
