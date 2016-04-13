@@ -327,6 +327,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Tan.keyboardDemo;
 				PRODUCT_NAME = WebKeyboardDemo;
+				PROVISIONING_PROFILE = "58fc867b-01d1-4f6d-ae97-def553de3e52";
 			};
 			name = Debug;
 		};
@@ -338,6 +339,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Tan.keyboardDemo;
 				PRODUCT_NAME = WebKeyboardDemo;
+				PROVISIONING_PROFILE = "58fc867b-01d1-4f6d-ae97-def553de3e52";
 			};
 			name = Release;
 		};

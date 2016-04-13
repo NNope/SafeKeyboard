@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+// 键盘高度
+#define KEYBOARDHEIGHT 216
 
 enum {
     NHKBImageLeft = 0,

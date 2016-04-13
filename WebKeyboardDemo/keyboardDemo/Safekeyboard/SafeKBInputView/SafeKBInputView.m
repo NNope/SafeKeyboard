@@ -50,6 +50,7 @@ static SafeKBInputView* keyboardViewTypeABCInstance = nil;
         self.textField.delegate = self;
         self.textField.safeTextDelegate = self;
         self.trueText = @"";
+        self.keyboardHeght = KEYBOARDHEIGHT;
         [self addSubview:self.textField];
     }
     return self;

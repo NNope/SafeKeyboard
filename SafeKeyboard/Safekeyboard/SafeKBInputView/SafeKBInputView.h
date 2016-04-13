@@ -23,6 +23,7 @@
 @property (nonatomic, strong) SafeTextField *textField;
 @property (nonatomic, copy) NSMutableString *placeholderText;
 @property (nonatomic, copy) NSString *trueText;
+@property (nonatomic, assign) CGFloat keyboardHeght;
 
 @property (nonatomic, weak) id<SafeKBInputViewDelegate> InputViewDelegate;
 

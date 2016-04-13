@@ -16,7 +16,6 @@
 #define FontSize 18
 
 #define CHAR_CORNER 8
-#define KEYBOARDHEIGHT 216
 #define TITLEHEIGHT 35
 #define ICONHEIGHT TITLEHEIGHT*0.5
 #define NHSCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
