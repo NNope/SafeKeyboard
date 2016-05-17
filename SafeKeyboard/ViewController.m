@@ -24,7 +24,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblWebnumTrue;
 @property (weak, nonatomic) IBOutlet UILabel *lblWebnumDecimalTrue;
 
-
 @property (nonatomic, strong) SafeKBInputView *input;
 
 @end
@@ -33,15 +32,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 
 - (IBAction)showABC:(id)sender
 {
-    self.input = [SafeKBInputView shareKBInputViewWithTypeABC];
+    self.input = [SafeKBInputView shareKBInputViewWithTypeAll];
     self.input.InputViewDelegate = self;
     [self.input show];
+    
+    
 }
 
 - (IBAction)showNum:(id)sender
@@ -60,26 +60,32 @@
 
 #pragma mark - delegate
 
-- (void)safeKBInputView:(SafeKBInputView *)inputView DidChangeText:(NSString *)text placeholderText:(NSString *)placeholder TextField:(SafeTextField *)textField
+- (void)safeKBInputViewDidChangeText:(SafeKBInputView *)inputView
 {
-    switch (textField.KBType)
+    switch (inputView.textField.KBType)
     {
         case SafeKeyboardTypeABC:
         {
-            self.lblWebpwd.text = placeholder;
-            self.lblWebpwdTrue.text = text;
+            self.lblWebpwd.text = inputView.placeholderText;
+            self.lblWebpwdTrue.text = inputView.trueText;
+        }
+            break;
+        case SafeKeyboardTypeAll:
+        {
+            self.lblWebpwd.text = inputView.placeholderText;
+            self.lblWebpwdTrue.text = inputView.trueText;
         }
             break;
         case SafeKeyboardTypeNum:
         {
-            self.lblWebnum.text = placeholder;
-            self.lblWebnumTrue.text = text;
+            self.lblWebnum.text = inputView.placeholderText;
+            self.lblWebnumTrue.text = inputView.trueText;
         }
             break;
         case SafeKeyboardTypeNumDecimal:
         {
-            self.lblWebnumDecimal.text = placeholder;
-            self.lblWebnumDecimalTrue.text = text;
+            self.lblWebnumDecimal.text = inputView.placeholderText;
+            self.lblWebnumDecimalTrue.text = inputView.trueText;
         }
             break;
             
