@@ -16,26 +16,34 @@
     self.textId = textId;
     if ([type isEqualToString:@"abc"])
     {
-        self.input = [SafeKBInputView shareKBInputViewWithTypeABC];
+        self.input = [HYSafeKBInputView shareKBInputViewWithTypeABC];
     }
     else if ([type isEqualToString:@"num"])
     {
-        self.input = [SafeKBInputView shareKBInputViewWithTypeNum];
+        self.input = [HYSafeKBInputView shareKBInputViewWithTypeNum];
     }
+    else if ([type isEqualToString:@"all"])
+    {
+        self.input = [HYSafeKBInputView shareKBInputViewWithTypeAll];
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         // 更UI
         [self.input show];
     });
     self.input.InputViewDelegate = self;
-    
+
 }
+
 
 #pragma mark - SafeKBInputViewDelegate
-- (void)safeKBInputView:(SafeKBInputView *)inputView DidChangeText:(NSString *)text placeholderText:(NSString *)placeholder TextField:(SafeTextField *)textField
+- (void)safeKBInputViewDidChangeText:(HYSafeKBInputView *)inputView
 {
-    NSString *js = [NSString stringWithFormat:@"var field = document.getElementById('%@'); field.value= '%@'; var btn = document.getElementById('button'); btn.value= '%@';",self.textId,placeholder,text];
+    NSString *encodeStr = [inputView.trueText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPasswordAllowedCharacterSet]];
+    
+    NSString *js = [NSString stringWithFormat:@"var field = document.getElementById('%@'); field.value= '%@'; var btn = document.getElementById('button'); var te = \"%@\"; te = decodeURIComponent(te); btn.value= te; ",self.textId,inputView.placeholderText,encodeStr ];
     [self.webView stringByEvaluatingJavaScriptFromString:js];
+    NSLog(@"%@",inputView.trueText);
 }
-
 
 @end
