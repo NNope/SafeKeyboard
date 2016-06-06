@@ -13,19 +13,20 @@
 #define TitleText @"网络安全输入"
 #define LogoImgName @"logo"
 // 字体
-#define KBFont(s) [UIFont fontWithName:@"HelveticaNeue-Light" size:s]
+#define KBFont(s) [UIFont systemFontOfSize:s]
 // 字体大小
 #define FontSize 18
 
+#define TAGSYS 99
 #define HIDEIMAGEWH 29
-#define CHAR_CORNER 8
+#define CHAR_CORNER 5
 #define NUM_CORNER 5
 #define KEYBOARDHEIGHT 216
 #define TITLEHEIGHT 35
 #define ICONHEIGHT TITLEHEIGHT*0.5
 #define NHSCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 // 键盘背景色
-#define BGColor RGB(210,214,219)
+#define BGColor RGB(243,243,243)
 // 标题文字颜色
 #define TitleColor RGB(0,0,0)
 // 按键文字颜色
@@ -36,6 +37,8 @@
 #define NumBtnBgColor RGB(244,244,244)
 // 完成按键蓝色背景色
 #define DoneBtnBgColor RGB(50,175,226)
+// Shift按键灰色背景色
+#define ShiftBtnBgColor RGB(182,186,190)
 // 完成按键文字色
 #define DoneBtnTitleColor RGB(255,255,255)
 // 数字键边框颜色
@@ -43,7 +46,7 @@
 // 数字按键高亮背景色
 #define BtnHighlightColor RGB(43, 116, 224)
 // title分割线颜色
-#define LineColor [UIColor lightGrayColor]
+#define LineColor BGColor
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 #define RGB(r,g,b) RGBA(r,g,b,1.0f)
 
@@ -77,9 +80,10 @@
 
 #define Characters @[@"q",@"w",@"e",@"r",@"t",@"y",@"u",@"i",@"o",@"p",@"a",@"s",@"d",@"f",@"g",@"h",@"j",@"k",@"l",@"z",@"x",@"c",@"v",@"b",@"n",@"m"]
 #define Symbols  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0",@"-",@"/",@":",@";",@"(",@")",@"$",@"&",@"@",@"\"",@".",@",",@"?",@"!",@"'"]
-#define moreSymbols  @[@"[",@"]",@"{",@"}",@"#",@"%",@"^",@"*",@"+",@"=",@"_",@"\\",@"|",@"~",@"<",@">",@"€",@"£",@"¥",@"•",@".",@",",@"?",@"!",@"'"]
 
-#define onlySymbols  @[@"(",@")",@"“",@"”",@"#",@"%",@"^",@"*",@"+",@"=",@"_",@"\\",@"|",@"~",@"<",@">",@":",@"@",@"¥",@"\'",@"…",@".",@"。",@"，",@"？",@"！",@"’"]
+#define onlySymbols  @[@"[",@"]",@"{",@"}",@"#",@"%",@"^",@"*",@"+",@"=",@"_",@"-",@"/",@":",@";",@"(",@")",@"$",@"&",@"@",@".",@"，",@"？",@"！",@"'",@"\\",@"|",@"~",@"`",@"<",@">",@"€",@"£",@"¥",@"\""]
+
+#define moreSymbols  @[@"(",@")",@"“",@"”",@"#",@"%",@"^",@"*",@"+",@"=",@"_",@"\\",@"|",@"~",@"<",@">",@":",@"@",@"¥",@"\'",@"…",@".",@"。",@"，",@"？",@"！",@"’"]
 
 #define KeyboardFinish @"完成"
 
@@ -193,19 +197,19 @@
     CGFloat scale = [UIScreen mainScreen].scale;
     UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(_PADDING_X/scale*scaleW, _PADDING_Y/scale, _UPPER_WIDTH/scale*scaleW, _PAN_UPPER_HEIGHT/scale)];
     
-    if ([self.chars isEqualToString:@"q"]||[self.chars isEqualToString:@"1"]||[self.chars isEqualToString:@"-"]||[self.chars isEqualToString:@"["]||[self.chars isEqualToString:@"_"]||[self.chars isEqualToString:@"("]||[self.chars isEqualToString:@"…"]) {
+    if ([self.chars isEqualToString:@"q"]||[self.chars isEqualToString:@"1"]||[self.chars isEqualToString:@"["]||[self.chars isEqualToString:@"_"]||[self.chars isEqualToString:@"."]||[self.chars isEqualToString:@"`"]) {
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:NHKBImageRight] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
         keyPop.frame = CGRectMake(-16*scaleW, -71, keyPop.frame.size.width*scaleW, keyPop.frame.size.height);
     }
-    else if ([self.chars isEqualToString:@"p"]||[self.chars isEqualToString:@"0"]||[self.chars isEqualToString:@"\""]||[self.chars isEqualToString:@"="]||[self.chars isEqualToString:@"•"]||[self.chars isEqualToString:@"'"]) {
+    else if ([self.chars isEqualToString:@"p"]||[self.chars isEqualToString:@"0"]||[self.chars isEqualToString:@"="]||[self.chars isEqualToString:@"@"]) {
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:NHKBImageLeft] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
         keyPop.frame = CGRectMake(-38*scaleW, -71, keyPop.frame.size.width*scaleW, keyPop.frame.size.height);
     }//@".",@",",@"?",@"!",@"'"]
-    else if ([self.chars isEqualToString:@"."]||[self.chars isEqualToString:@"。"]||[self.chars isEqualToString:@"，"]||[self.chars isEqualToString:@"？"]||[self.chars isEqualToString:@"！"]||[self.chars isEqualToString:@"’"]) {
+    else if ([self.chars isEqualToString:@"."]||[self.chars isEqualToString:@","]||[self.chars isEqualToString:@"?"]||[self.chars isEqualToString:@"!"]) {
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:NHKBImageInner] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
         float dWidth = 4*scaleW;
         text.frame = CGRectMake(text.frame.origin.x+dWidth, text.frame.origin.y, text.frame.size.width, text.frame.size.height);
-        keyPop.frame = CGRectMake(-(25*scaleW+dWidth), -71, keyPop.frame.size.width*scaleW+2*dWidth, keyPop.frame.size.height);
+        keyPop.frame = CGRectMake(-(20*scaleW+dWidth), -71, keyPop.frame.size.width*scaleW+2*dWidth, keyPop.frame.size.height);
     }
     else {
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:NHKBImageInner] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
@@ -522,20 +526,33 @@ static SafeKeyboard* keyboardViewInstance = nil;
 {
     UIView *tool = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, TITLEHEIGHT)];
     [self addSubview:tool];
-    tool.backgroundColor = [UIColor whiteColor];
+    tool.backgroundColor = BGColor;
     self.toolBar = tool;
     
     CGFloat marginLeft = 18;
+    CGFloat sysWidth = 130;
+    // 增加切换系统键盘
+    UIButton *sys = [UIButton buttonWithType:UIButtonTypeCustom];
+    sys.titleLabel.font = [UIFont systemFontOfSize:16];
+    [sys setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [sys setTitle:@"切换系统输入法" forState:UIControlStateNormal];
+    sys.frame = CGRectMake(marginLeft/3, 0, sysWidth, TITLEHEIGHT);
+    [sys addTarget:self action:@selector(toolBarClick:) forControlEvents:UIControlEventTouchUpInside];
+    sys.tag = TAGSYS;
+    [self.toolBar addSubview:sys];
+    
+    // 增加功能
     CGFloat margin = 25;
     CGFloat btnWidth = 35;
+
     NSArray *titles = @[@"字母",@"数字",@"字符"];
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < titles.count; i++)
     {
         UIButton *Btn = [UIButton buttonWithType:UIButtonTypeCustom];
         Btn.titleLabel.font = [UIFont systemFontOfSize:16];
         [Btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [Btn setTitleColor:[UIColor colorWithRed:50/255.0 green:175/255.0 blue:226/255.0 alpha:1] forState:UIControlStateSelected];
-        Btn.frame = CGRectMake(marginLeft + i*(btnWidth + margin), 0, btnWidth, TITLEHEIGHT);
+        Btn.frame = CGRectMake(marginLeft*2 + sysWidth + i*(btnWidth + margin), 0, btnWidth, TITLEHEIGHT);
         [self.toolBar addSubview:Btn];
         [Btn setTitle:titles[i] forState:UIControlStateNormal];
         [Btn addTarget:self action:@selector(toolBarClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -546,11 +563,11 @@ static SafeKeyboard* keyboardViewInstance = nil;
         }
     }
     
-    UIButton *hide = [UIButton buttonWithType:UIButtonTypeCustom];
-    hide.frame = CGRectMake(self.bounds.size.width-20-HIDEIMAGEWH, 0, HIDEIMAGEWH, HIDEIMAGEWH);
-    [hide setImage:[UIImage imageNamed:@"hide"] forState:UIControlStateNormal];
-    [hide addTarget:self action:@selector(charDoneAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.toolBar addSubview:hide];
+//    UIButton *hide = [UIButton buttonWithType:UIButtonTypeCustom];
+//    hide.frame = CGRectMake(self.bounds.size.width-20-HIDEIMAGEWH, 0, HIDEIMAGEWH, HIDEIMAGEWH);
+//    [hide setImage:[UIImage imageNamed:@"hide"] forState:UIControlStateNormal];
+//    [hide addTarget:self action:@selector(charDoneAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.toolBar addSubview:hide];
     
 }
 
@@ -603,7 +620,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
     NSInteger len = [chars count];
     // 按键间距，左右间距为此间距一半
     CGFloat charMarginX = 7;
-    CGFloat charMarginY = 13;
+    CGFloat charMarginY = 9;
     CGFloat KBMarginY = 10;
     // 字母宽度
     CGFloat char_width = (NHSCREEN_WIDTH-charMarginX*len)/len;
@@ -692,7 +709,8 @@ static SafeKeyboard* keyboardViewInstance = nil;
     if (init)// 如果是初始化 需要创建shift 不然不用管
     {
         // shift
-        UIImage *roundImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(shiftWidth, char_heigh)];
+        UIImage *donebgImg = [UIImage imageWithColor:ShiftBtnBgColor];
+        UIImage *roundImg = [donebgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(shiftWidth, char_heigh)];
         bounds = CGRectMake(charMarginX*0.5, cur_y, shiftWidth, char_heigh);
         btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = bounds;
@@ -760,7 +778,8 @@ static SafeKeyboard* keyboardViewInstance = nil;
         cur_y += char_heigh+charMarginY;
         // #+123
         CGFloat symbolWidth = shiftWidth*2;
-        UIImage *roundImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(symbolWidth, char_heigh)];
+        UIImage *donebgImg = [UIImage imageWithColor:DoneBtnBgColor];
+        UIImage *roundImg = [donebgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(symbolWidth, char_heigh)];
         //        bounds = CGRectMake(charMarginX*0.5, cur_y, symbolWidth, char_heigh);
         //        btn = [UIButton buttonWithType:UIButtonTypeCustom];
         //        btn.frame = bounds;
@@ -787,7 +806,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
         btn.titleLabel.font = titleFont;
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
         btn.titleLabel.textColor = titleColor;
-        [btn setTitleColor:titleColor forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn setTitle:KeyboardFinish forState:UIControlStateNormal];
         [btn setBackgroundImage:roundImg forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -876,7 +895,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
     NSArray *rangs;
     // 显示符号是显示普通数字符号 还是 更多符号
     symbolSets = onlySymbols;
-    rangs = @[@10,@20,@27];
+    rangs = @[@10,@20,@28,@35];
     
     //第一排
     NSInteger loc = 0;
@@ -886,7 +905,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
     NSInteger len = [chars count];
     // 按键间距，左右间距为此间距一半
     CGFloat charMarginX = 7;
-    CGFloat charMarginY = 13;
+    CGFloat charMarginY = 9;
     CGFloat KBMarginY = 10;
     // 字母宽度
     CGFloat char_width = (NHSCREEN_WIDTH-charMarginX*len)/len;
@@ -968,7 +987,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
     
     len = [chars count];
     // 除去2个特殊宽度 和 4个间距  其中2个0.5左右前后 2个1.5为特殊按钮和普通的间距
-    char_width = (NHSCREEN_WIDTH-charMarginX*4-shiftWidth*2-charMarginX*(len-1))/len;
+//    char_width = (NHSCREEN_WIDTH-charMarginX*4-shiftWidth*2-charMarginX*(len-1))/len;
     // 重新生成图片
     charbgImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(char_width, char_heigh)];
     CGRect bounds;
@@ -976,8 +995,8 @@ static SafeKeyboard* keyboardViewInstance = nil;
     
     for (int i = 0 ; i < len; i ++)
     {
-        // 0.5+1.5 + shiftW + 正常的算法（charW+Margin）
-        CGRect bounds = CGRectMake(charMarginX*0.5+(char_width+charMarginX*2.1)*i, cur_y, char_width*1.2, char_heigh);
+        // 0.5+1.5 + shiftW + 正常的算法（charW+Margin）   start_x+(char_width+charMarginX)*i
+        CGRect bounds = CGRectMake(charMarginX*0.5+(char_width+charMarginX)*i, cur_y, char_width, char_heigh);
         CharButton *btn = [CharButton buttonWithType:UIButtonTypeCustom];
         btn.frame = bounds;
         btn.exclusiveTouch = true;
@@ -994,11 +1013,13 @@ static SafeKeyboard* keyboardViewInstance = nil;
         [self addSubview:btn];
         [self.symbolBtns addObject:btn];
     }
+    n+=len;
+    
     // 删除按钮
     // delete
-    
-    UIImage *roundImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(shiftWidth, char_heigh)];
-    bounds = CGRectMake(NHSCREEN_WIDTH-charMarginX*0.5-shiftWidth, cur_y, shiftWidth, char_heigh);
+    UIImage *delbgImg = [UIImage imageWithColor:ShiftBtnBgColor];
+    UIImage *roundImg = [delbgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(shiftWidth, char_heigh)];
+    bounds = CGRectMake(NHSCREEN_WIDTH-charMarginX*1.5-char_width*2, cur_y, char_width*2+charMarginX, char_heigh);
     btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = bounds;
     btn.exclusiveTouch = true;
@@ -1019,19 +1040,48 @@ static SafeKeyboard* keyboardViewInstance = nil;
     
     
     //第四排
-    
     cur_y += char_heigh+charMarginY;
+    loc = [[rangs objectAtIndex:2] integerValue];
+    length = [[rangs objectAtIndex:3] integerValue];
+    chars = [symbolSets subarrayWithRange:NSMakeRange(loc, length-loc)];
+    
+    len = [chars count];
+    // 除去2个特殊宽度 和 4个间距  其中2个0.5左右前后 2个1.5为特殊按钮和普通的间距
+    char_width = (NHSCREEN_WIDTH-charMarginX*4-shiftWidth*2-charMarginX*(len-1))/len;
+    // 重新生成图片
+    charbgImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(char_width, char_heigh)];
+    
+    for (int i = 0 ; i < len; i ++)
+    {
+        // 0.5+1.5 + shiftW + 正常的算法（charW+Margin）charMarginX*0.5+(char_width+charMarginX*2.1)*i
+        CGRect bounds = CGRectMake(charMarginX*0.5+(char_width+charMarginX)*i, cur_y, char_width, char_heigh);
+        CharButton *btn = [CharButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = bounds;
+        btn.exclusiveTouch = true;
+        btn.titleLabel.font = titleFont;
+        btn.titleLabel.textAlignment = NSTextAlignmentCenter;
+        btn.titleLabel.textColor = titleColor;
+        [btn setTitleColor:titleColor forState:UIControlStateNormal];
+        [btn setBackgroundImage:charbgImg forState:UIControlStateNormal];
+        [btn setTag:n+i];
+        //        [btn addTarget:self action:@selector(characterTouchAction:) forControlEvents:UIControlEventTouchUpInside];
+        btn.userInteractionEnabled = false;
+        [self setBtnShadow:btn];
+        
+        [self addSubview:btn];
+        [self.symbolBtns addObject:btn];
+    }
     // 完成按钮
-    CGFloat symbolWidth = shiftWidth*2;
-    roundImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(symbolWidth, char_heigh)];
-    bounds = CGRectMake(NHSCREEN_WIDTH-charMarginX*0.5-symbolWidth, cur_y, symbolWidth, char_heigh);
+    CGFloat symbolWidth = char_width*3+charMarginX*2;
+    UIImage *donebgImg = [UIImage imageWithColor:DoneBtnBgColor];
+    roundImg = [donebgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(symbolWidth, char_heigh)];
+    bounds = CGRectMake(NHSCREEN_WIDTH-charMarginX*.5-symbolWidth, cur_y, symbolWidth, char_heigh);
     btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = bounds;
     btn.exclusiveTouch = true;
     btn.titleLabel.font = titleFont;
     btn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    btn.titleLabel.textColor = titleColor;
-    [btn setTitleColor:titleColor forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setTitle:KeyboardFinish forState:UIControlStateNormal];
     [btn setBackgroundImage:roundImg forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -1043,29 +1093,29 @@ static SafeKeyboard* keyboardViewInstance = nil;
     [self.moreBtns addObject:btn];
     
     // space 前后0.5 中间2
-    CGFloat spaceWidth = (NHSCREEN_WIDTH-charMarginX*3-symbolWidth);
-    roundImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(spaceWidth, char_heigh)];
-    bounds = CGRectMake(charMarginX*.5, cur_y, spaceWidth, char_heigh);
-    btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = bounds;
-    btn.exclusiveTouch = true;
-    btn.titleLabel.font = titleFont;
-    btn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    btn.titleLabel.textColor = titleColor;
-    [btn setTitleColor:titleColor forState:UIControlStateNormal];
-    [btn setTitle:TitleText forState:UIControlStateNormal];
-    btn.titleEdgeInsets = UIEdgeInsetsMake(5, -60, 5, 10);
-    btn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [btn setImage:[UIImage imageNamed:LogoImgName] forState:UIControlStateNormal];
-    btn.imageEdgeInsets = UIEdgeInsetsMake(5,-10,5,0);
-    btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [btn setBackgroundImage:roundImg forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(charSpaceAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self setBtnShadow:btn];
-    
-    [self addSubview:btn];
-    
-    [self.moreBtns addObject:btn];
+//    CGFloat spaceWidth = (NHSCREEN_WIDTH-charMarginX*3-symbolWidth);
+//    roundImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(spaceWidth, char_heigh)];
+//    bounds = CGRectMake(charMarginX*.5, cur_y, spaceWidth, char_heigh);
+//    btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btn.frame = bounds;
+//    btn.exclusiveTouch = true;
+//    btn.titleLabel.font = titleFont;
+//    btn.titleLabel.textAlignment = NSTextAlignmentCenter;
+//    btn.titleLabel.textColor = titleColor;
+//    [btn setTitleColor:titleColor forState:UIControlStateNormal];
+//    [btn setTitle:TitleText forState:UIControlStateNormal];
+//    btn.titleEdgeInsets = UIEdgeInsetsMake(5, -60, 5, 10);
+//    btn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [btn setImage:[UIImage imageNamed:LogoImgName] forState:UIControlStateNormal];
+//    btn.imageEdgeInsets = UIEdgeInsetsMake(5,-10,5,0);
+//    btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+//    [btn setBackgroundImage:roundImg forState:UIControlStateNormal];
+//    [btn addTarget:self action:@selector(charSpaceAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self setBtnShadow:btn];
+//    
+//    [self addSubview:btn];
+//    
+//    [self.moreBtns addObject:btn];
     // 设置符号
     [self setCharactersText:symbolSets];
 }
@@ -1299,6 +1349,17 @@ static SafeKeyboard* keyboardViewInstance = nil;
 - (void)toolBarClick:(UIButton *)btn
 {
     NSLog(@" 当前的type-%ld",(long)self.type);
+    if (btn.tag == TAGSYS)
+    {
+        
+        id tempTextView = _inputSource;
+        [tempTextView setInputView:nil];
+        [tempTextView reloadInputViews];
+        self.inputSource = nil;
+//        [self addBackKeyboardButton:@"More-Key"];
+        return;
+    }
+    
     if (btn == self.toolSelectedBtn)
     {
         return;
@@ -1503,6 +1564,10 @@ static SafeKeyboard* keyboardViewInstance = nil;
 // 设置数字键盘文字
 - (void)setRandomNumberText
 {
+    if (self.type != SafeKeyboardTypeNum && self.type != SafeKeyboardTypeNumDecimal)
+    {
+        return;
+    }
     BOOL isDecimal = self.type == SafeKeyboardTypeNum?NO:YES;
     NSMutableArray *numbers = [NSMutableArray array];
     
