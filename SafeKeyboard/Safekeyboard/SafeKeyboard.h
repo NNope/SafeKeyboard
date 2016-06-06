@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+// 键盘高度
+#define KEYBOARDHEIGHT 216
 
 enum {
     NHKBImageLeft = 0,
@@ -16,11 +18,9 @@ enum {
 };
 
 typedef NS_ENUM(NSInteger,SafeKeyboardType){
-    SafeKeyboardTypeAll         = 1 << 0,
-    SafeKeyboardTypeNum         = 1 << 1,
-    SafeKeyboardTypeNumDecimal  = 1 << 2,
-    SafeKeyboardTypeABC         = 1 << 3,
-    SafeKeyboardTypeSymbol      = 1 << 4
+    SafeKeyboardTypeNum         = 1 << 0,
+    SafeKeyboardTypeNumDecimal  = 1 << 1,
+    SafeKeyboardTypeABC         = 1 << 2
 };
 
 @interface SafeKeyboard : UIView

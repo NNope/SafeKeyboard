@@ -8,33 +8,20 @@
 
 #import "SafeKBInputView.h"
 
-static SafeKBInputView* keyboardInputViewInstance = nil;
-static SafeKBInputView* keyboardViewTypeNumDecimalInstance = nil;
 static SafeKBInputView* keyboardViewTypeNumInstance = nil;
+static SafeKBInputView* keyboardViewTypeNumDecimalInstance = nil;
 static SafeKBInputView* keyboardViewTypeABCInstance = nil;
 @implementation SafeKBInputView
 
-// 默认可切换键盘
-+(SafeKBInputView *)shareKBInputViewWithTypeAll
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-        keyboardInputViewInstance = [[SafeKBInputView alloc] initWithSafeKeyboardType:SafeKeyboardTypeAll];
-    });
-    return keyboardInputViewInstance;
-}
-// 数字
 +(SafeKBInputView *)shareKBInputViewWithTypeNum
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
+
         keyboardViewTypeNumInstance = [[SafeKBInputView alloc] initWithSafeKeyboardType:SafeKeyboardTypeNum];
     });
     return keyboardViewTypeNumInstance;
 }
-// 数字+小数点
 +(SafeKBInputView *)shareKBInputViewWithTypeNumDecimal
 {
     static dispatch_once_t onceToken;
@@ -44,7 +31,6 @@ static SafeKBInputView* keyboardViewTypeABCInstance = nil;
     });
     return keyboardViewTypeNumDecimalInstance;
 }
-// 字母
 +(SafeKBInputView *)shareKBInputViewWithTypeABC
 {
     static dispatch_once_t onceToken;
@@ -64,6 +50,7 @@ static SafeKBInputView* keyboardViewTypeABCInstance = nil;
         self.textField.delegate = self;
         self.textField.safeTextDelegate = self;
         self.trueText = @"";
+        self.keyboardHeght = KEYBOARDHEIGHT;
         [self addSubview:self.textField];
     }
     return self;
@@ -98,10 +85,9 @@ static SafeKBInputView* keyboardViewTypeABCInstance = nil;
     }
     self.trueText = textField.text;
     
-    
-    if (self.InputViewDelegate && [self.InputViewDelegate respondsToSelector:@selector(safeKBInputViewDidChangeText:)])
+    if (self.InputViewDelegate && [self.InputViewDelegate respondsToSelector:@selector(safeKBInputView:DidChangeText:placeholderText:TextField:)])
     {
-        [self.InputViewDelegate safeKBInputViewDidChangeText:self];
+        [self.InputViewDelegate safeKBInputView:self DidChangeText:self.trueText placeholderText:self.placeholderText TextField:self.textField];
     }
 }
 
@@ -117,9 +103,9 @@ static SafeKBInputView* keyboardViewTypeABCInstance = nil;
     self.trueText = [self.trueText stringByAppendingString:string];
     
     
-    if (self.InputViewDelegate && [self.InputViewDelegate respondsToSelector:@selector(safeKBInputViewDidChangeText:)])
+    if (self.InputViewDelegate && [self.InputViewDelegate respondsToSelector:@selector(safeKBInputView:DidChangeText:placeholderText:TextField:)])
     {
-        [self.InputViewDelegate safeKBInputViewDidChangeText:self];
+        [self.InputViewDelegate safeKBInputView:self DidChangeText:self.trueText placeholderText:self.placeholderText TextField:self.textField];
     }
     return YES;
 }

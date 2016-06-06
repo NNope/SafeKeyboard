@@ -17,10 +17,12 @@
 // 字体大小
 #define FontSize 18
 
-#define HIDEIMAGEWH 29
 #define CHAR_CORNER 8
+<<<<<<< HEAD
 #define NUM_CORNER 5
 #define KEYBOARDHEIGHT 216
+=======
+>>>>>>> parent of 2b9662a... add toolBar
 #define TITLEHEIGHT 35
 #define ICONHEIGHT TITLEHEIGHT*0.5
 #define NHSCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -79,12 +81,11 @@
 #define Symbols  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0",@"-",@"/",@":",@";",@"(",@")",@"$",@"&",@"@",@"\"",@".",@",",@"?",@"!",@"'"]
 #define moreSymbols  @[@"[",@"]",@"{",@"}",@"#",@"%",@"^",@"*",@"+",@"=",@"_",@"\\",@"|",@"~",@"<",@">",@"€",@"£",@"¥",@"•",@".",@",",@"?",@"!",@"'"]
 
+<<<<<<< HEAD
 #define onlySymbols  @[@"(",@")",@"“",@"”",@"#",@"%",@"^",@"*",@"+",@"=",@"_",@"\\",@"|",@"~",@"<",@">",@":",@"@",@"¥",@"\'",@"…",@".",@"。",@"，",@"？",@"！",@"’"]
+=======
+>>>>>>> parent of 2b9662a... add toolBar
 
-#define KeyboardFinish @"完成"
-
-#define scaleW [UIScreen mainScreen].bounds.size.width/320
-#define scaleH [UIScreen mainScreen].bounds.size.height/568
 #pragma mark - UIImageCategory
 @interface UIImage (Category)
 
@@ -109,7 +110,6 @@
     return img;
 }
 
-
 // 圆角
 - (UIImage *)drawRectWithRoundCorner:(CGFloat)radius toSize:(CGSize)size
 {
@@ -130,7 +130,6 @@
 }
 
 @end
-
 
 #pragma mark -CharButton
 @interface CharButton : UIButton
@@ -191,12 +190,17 @@
 {
     UIImageView *keyPop;
     CGFloat scale = [UIScreen mainScreen].scale;
-    UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(_PADDING_X/scale*scaleW, _PADDING_Y/scale, _UPPER_WIDTH/scale*scaleW, _PAN_UPPER_HEIGHT/scale)];
+    UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(_PADDING_X/scale, _PADDING_Y/scale, _UPPER_WIDTH/scale, _PAN_UPPER_HEIGHT/scale)];
     
+<<<<<<< HEAD
     if ([self.chars isEqualToString:@"q"]||[self.chars isEqualToString:@"1"]||[self.chars isEqualToString:@"-"]||[self.chars isEqualToString:@"["]||[self.chars isEqualToString:@"_"]) {
+=======
+    if ([self.chars isEqualToString:@"q"]||[self.chars isEqualToString:@"a"]) {
+>>>>>>> parent of 2b9662a... add toolBar
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:NHKBImageRight] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
-        keyPop.frame = CGRectMake(-16*scaleW, -71, keyPop.frame.size.width*scaleW, keyPop.frame.size.height);
+        keyPop.frame = CGRectMake(-16, -71, keyPop.frame.size.width, keyPop.frame.size.height);
     }
+<<<<<<< HEAD
     else if ([self.chars isEqualToString:@"p"]||[self.chars isEqualToString:@"0"]||[self.chars isEqualToString:@"\""]||[self.chars isEqualToString:@"="]||[self.chars isEqualToString:@"•"]) {
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:NHKBImageLeft] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
         keyPop.frame = CGRectMake(-38*scaleW, -71, keyPop.frame.size.width*scaleW, keyPop.frame.size.height);
@@ -206,10 +210,15 @@
         float dWidth = 4*scaleW;
         text.frame = CGRectMake(text.frame.origin.x+dWidth, text.frame.origin.y, text.frame.size.width, text.frame.size.height);
         keyPop.frame = CGRectMake(-(20*scaleW+dWidth), -71, keyPop.frame.size.width*scaleW+2*dWidth, keyPop.frame.size.height);
+=======
+    else if ([self.chars isEqualToString:@"p"]||[self.chars isEqualToString:@"l"]) {
+        keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:NHKBImageLeft] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
+        keyPop.frame = CGRectMake(-38, -71, keyPop.frame.size.width, keyPop.frame.size.height);
+>>>>>>> parent of 2b9662a... add toolBar
     }
     else {
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:NHKBImageInner] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
-        keyPop.frame = CGRectMake(-27*scaleW, -71, keyPop.frame.size.width*scaleW, keyPop.frame.size.height);
+        keyPop.frame = CGRectMake(-27, -71, keyPop.frame.size.width, keyPop.frame.size.height);
     }
     NSString *tmp = self.isShift?[self.chars uppercaseString]:[self.chars lowercaseString];
     [text setFont:KBFont(44)];
@@ -227,7 +236,6 @@
     
     [keyPop addSubview:text];
     [self addSubview:keyPop];
-    [[self superview] bringSubviewToFront:self];
 }
 
 /**
@@ -414,21 +422,11 @@
  */
 @property (nonatomic, strong) NSArray *numKeys;
 
-@property (nonatomic, weak) UIView *toolBar;
-@property (nonatomic, assign) BOOL isToolBarShow;
-@property (nonatomic, weak) UIButton *toolSelectedBtn;
-
 @property (nonatomic, assign) BOOL shiftEnable,showSymbol,showMoreSymbol;
-// 字母字符按键数组
 @property (nonatomic, strong) NSMutableArray *charsBtn;
-// 单独符号数组
-@property (nonatomic, strong) NSMutableArray *symbolBtns;
 @property (nonatomic, strong) UIButton *shiftBtn,*charSymSwitch;
-// 功能按键数组
-@property (nonatomic, strong) NSMutableArray *moreBtns;
 @property (nonatomic, strong) UIImageView *iconFlag;
 @property (nonatomic, strong) UILabel *iconLabel;
-@property (nonatomic, strong) UIImageView *deleteImage;
 
 @end
 
@@ -453,11 +451,6 @@ static SafeKeyboard* keyboardViewInstance = nil;
 - (instancetype)initWithFrame:(CGRect)frame withType:(SafeKeyboardType)type {
     self = [super initWithFrame:frame];
     if (self) {
-        if (type == SafeKeyboardTypeAll)
-        {
-            self.isToolBarShow = YES;
-            type = SafeKeyboardTypeABC;
-        }
         self.type = type;
         [self initSetup];
     }
@@ -475,6 +468,9 @@ static SafeKeyboard* keyboardViewInstance = nil;
 #pragma mark - 创建键盘
 - (void)initSetup
 {
+    // 设置logo title
+    self.icon = @"log1o";
+    self.enterprise = @"完美刀塔2安全输入";
     // 背景色
     self.backgroundColor = BGColor;
     CGRect bounds = self.bounds;
@@ -482,6 +478,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
     bounds.size.height = KEYBOARDHEIGHT+TITLEHEIGHT;
     self.bounds = bounds;
     
+<<<<<<< HEAD
     // 设置logo title
     if (!self.isToolBarShow)
     {
@@ -494,6 +491,8 @@ static SafeKeyboard* keyboardViewInstance = nil;
         [self setUpToolBar];
     }
     
+=======
+>>>>>>> parent of 2b9662a... add toolBar
     // 分割线
     CGFloat lineH = 1;
     bounds = CGRectMake(0, TITLEHEIGHT-lineH, NHSCREEN_WIDTH,lineH);
@@ -516,6 +515,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
     }
 }
 
+<<<<<<< HEAD
 
 #pragma mark- 创建工具条
 - (void)setUpToolBar
@@ -554,6 +554,8 @@ static SafeKeyboard* keyboardViewInstance = nil;
     
 }
 
+=======
+>>>>>>> parent of 2b9662a... add toolBar
 #pragma mark- 创建字母按键
 /**
  *  布局字母键盘
@@ -709,11 +711,8 @@ static SafeKeyboard* keyboardViewInstance = nil;
         
         [self addSubview:btn];
         self.shiftBtn = btn;
-        [self updateShiftBtnTitleState];
-        [self.moreBtns addObject:btn];
         
         // delete
-        
         bounds = CGRectMake(NHSCREEN_WIDTH-charMarginX*0.5-shiftWidth, cur_y, shiftWidth, char_heigh);
         btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = bounds;
@@ -722,17 +721,12 @@ static SafeKeyboard* keyboardViewInstance = nil;
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
         btn.titleLabel.textColor = titleColor;
         [btn setTitleColor:titleColor forState:UIControlStateNormal];
-        //[btn setTitle:@"✗" forState:UIControlStateNormal];
-        [btn.imageView setContentMode:UIViewContentModeScaleAspectFill];
-        [btn setImage:[UIImage imageNamed:@"del"] forState:UIControlStateNormal];
+        [btn setTitle:@"✗" forState:UIControlStateNormal];
         [btn setBackgroundImage:roundImg forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(charDeleteAction:) forControlEvents:UIControlEventTouchUpInside];
-        
         [self setBtnShadow:btn];
+
         [self addSubview:btn];
-        
-        [self.moreBtns addObject:btn];
-        
     }
     
     for (int i = 0 ; i < len; i ++)
@@ -761,6 +755,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
         // #+123
         CGFloat symbolWidth = shiftWidth*2;
         UIImage *roundImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(symbolWidth, char_heigh)];
+<<<<<<< HEAD
         //        bounds = CGRectMake(charMarginX*0.5, cur_y, symbolWidth, char_heigh);
         //        btn = [UIButton buttonWithType:UIButtonTypeCustom];
         //        btn.frame = bounds;
@@ -779,6 +774,23 @@ static SafeKeyboard* keyboardViewInstance = nil;
         //
         //        [self.moreBtns addObject:btn];
         
+=======
+        bounds = CGRectMake(charMarginX*0.5, cur_y, symbolWidth, char_heigh);
+        btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = bounds;
+        btn.exclusiveTouch = true;
+        btn.titleLabel.font = titleFont;
+        btn.titleLabel.textAlignment = NSTextAlignmentCenter;
+        btn.titleLabel.textColor = titleColor;
+        [btn setTitleColor:titleColor forState:UIControlStateNormal];
+        [btn setTitle:@"#+123" forState:UIControlStateNormal];
+        [btn setBackgroundImage:roundImg forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(charSymbolSwitch:) forControlEvents:UIControlEventTouchUpInside];
+        [self setBtnShadow:btn];
+
+        [self addSubview:btn];
+        self.charSymSwitch = btn;
+>>>>>>> parent of 2b9662a... add toolBar
         // 完成按钮
         bounds = CGRectMake(NHSCREEN_WIDTH-charMarginX*0.5-symbolWidth, cur_y, symbolWidth, char_heigh);
         btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -788,16 +800,13 @@ static SafeKeyboard* keyboardViewInstance = nil;
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
         btn.titleLabel.textColor = titleColor;
         [btn setTitleColor:titleColor forState:UIControlStateNormal];
-        [btn setTitle:KeyboardFinish forState:UIControlStateNormal];
+        [btn setTitle:@"✓" forState:UIControlStateNormal];
         [btn setBackgroundImage:roundImg forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
         [btn addTarget:self action:@selector(charDoneAction:) forControlEvents:UIControlEventTouchUpInside];
         [self setBtnShadow:btn];
         
         [self addSubview:btn];
-        
-        [self.moreBtns addObject:btn];
-        
         // space 前后0.5 中间2
         CGFloat spaceWidth = (NHSCREEN_WIDTH-charMarginX*3-symbolWidth);
         roundImg = [bgImg drawRectWithRoundCorner:CHAR_CORNER toSize:CGSizeMake(spaceWidth, char_heigh)];
@@ -820,8 +829,6 @@ static SafeKeyboard* keyboardViewInstance = nil;
         [self setBtnShadow:btn];
         
         [self addSubview:btn];
-        
-        [self.moreBtns addObject:btn];
     }
     // 设置符号
     [self setCharactersText:charSets];
@@ -853,7 +860,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
             if (btnTag < len)
             {
                 NSString *tmpTitle = [array objectAtIndex:btnTag];
-                if (self.showSymbol || self.type == SafeKeyboardTypeSymbol) // 是否是符号
+                if (self.showSymbol) // 是否是符号
                 {
                     [tmp updateChar:tmpTitle];
                 }
@@ -867,6 +874,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
     
 }
 
+<<<<<<< HEAD
 // 创建专门的字符键盘
 - (void)setUpOnlySymbol
 {
@@ -1067,6 +1075,8 @@ static SafeKeyboard* keyboardViewInstance = nil;
     [self setCharactersText:symbolSets];
 }
 
+=======
+>>>>>>> parent of 2b9662a... add toolBar
 #pragma mark - 字母键盘事件
 
 // #+123-ABC   字母 符号切换
@@ -1292,6 +1302,7 @@ static SafeKeyboard* keyboardViewInstance = nil;
     }
 }
 
+<<<<<<< HEAD
 // 工具条切换
 - (void)toolBarClick:(UIButton *)btn
 {
@@ -1367,6 +1378,8 @@ static SafeKeyboard* keyboardViewInstance = nil;
     
 }
 
+=======
+>>>>>>> parent of 2b9662a... add toolBar
 #pragma mark - 键盘Pan
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -1400,10 +1413,13 @@ static SafeKeyboard* keyboardViewInstance = nil;
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     //NSLog(@"_%s_",__FUNCTION__);
     CGPoint touchPoint = [[touches anyObject] locationInView:self];
+<<<<<<< HEAD
     if (self.type == SafeKeyboardTypeSymbol)
     {
         return;
     }
+=======
+>>>>>>> parent of 2b9662a... add toolBar
     for (CharButton *tmp in self.charsBtn) {
         NSArray *subs = [tmp subviews];
         if (subs.count == 3) {
@@ -1472,11 +1488,16 @@ static SafeKeyboard* keyboardViewInstance = nil;
                 }
                 else if (btnIndex == 11)
                 {
+<<<<<<< HEAD
                     UIImage *donebgImg = [UIImage imageWithColor:DoneBtnBgColor];
                     donebgImg = [donebgImg drawRectWithRoundCorner:NUM_CORNER toSize:CGSizeMake(itemW, itemH)];
                     [btn setBackgroundImage:donebgImg forState:UIControlStateNormal];
                     [btn setTitleColor:DoneBtnTitleColor forState:UIControlStateNormal];
                     selector = @selector(numberPadDoneClick:);
+=======
+                    selector = decimal?@selector(numberPadDelClick:):@selector(numberPadDoneClick:);
+
+>>>>>>> parent of 2b9662a... add toolBar
                 }
                 else
                 {
@@ -1522,14 +1543,20 @@ static SafeKeyboard* keyboardViewInstance = nil;
         {
             if (!isDecimal)
             {
-                //[button setTitle:@"✗" forState:UIControlStateNormal];
-                [button setImage:[UIImage imageNamed:@"del"] forState:UIControlStateNormal];
+                [button setTitle:@"✗" forState:UIControlStateNormal];
                 continue;
             }
         }
         else if (i == 11)
         {
-            [button setTitle:KeyboardFinish forState:UIControlStateNormal];
+            if (isDecimal)
+            {
+                [button setTitle:@"✗" forState:UIControlStateNormal];
+            }
+            else
+            {
+                [button setTitle:@"✓" forState:UIControlStateNormal];
+            }
             continue;
         }
         
@@ -1696,24 +1723,6 @@ static SafeKeyboard* keyboardViewInstance = nil;
 }
 
 #pragma mark - getter setter
--(NSMutableArray *)symbolBtns
-{
-    if (!_symbolBtns)
-    {
-        _symbolBtns = [NSMutableArray array];
-    }
-    return _symbolBtns;
-}
-
--(NSMutableArray *)moreBtns
-{
-    if (!_moreBtns)
-    {
-        _moreBtns = [NSMutableArray array];
-    }
-    return _moreBtns;
-}
-
 // 标题
 - (UILabel *)iconLabel
 {
