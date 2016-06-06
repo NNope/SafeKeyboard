@@ -16,6 +16,7 @@
             startingLineNumber = "950"
             endingLineNumber = "950"
 <<<<<<< HEAD
+<<<<<<< HEAD
             landmarkName = "-setUpOnlySymbol"
             landmarkType = "5">
          </BreakpointContent>
@@ -97,6 +98,9 @@
             startingLineNumber = "120"
             endingLineNumber = "120"
             landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
+=======
+            landmarkName = "-charDoneAction:"
+>>>>>>> parent of 2b9662a... add toolBar
 =======
             landmarkName = "-charDoneAction:"
 >>>>>>> parent of 2b9662a... add toolBar
