@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
             endingLineNumber = "65"
-            landmarkName = "-safeKBInputView:DidChangeText:placeholderText:TextField:"
+            landmarkName = "-safeKBInputViewDidChangeText:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
