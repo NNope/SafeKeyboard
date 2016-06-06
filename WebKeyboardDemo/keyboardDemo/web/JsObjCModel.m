@@ -16,15 +16,15 @@
     self.textId = textId;
     if ([type isEqualToString:@"abc"])
     {
-        self.input = [HYSafeKBInputView shareKBInputViewWithTypeABC];
+        self.input = [SafeKBInputView shareKBInputViewWithTypeABC];
     }
     else if ([type isEqualToString:@"num"])
     {
-        self.input = [HYSafeKBInputView shareKBInputViewWithTypeNum];
+        self.input = [SafeKBInputView shareKBInputViewWithTypeNum];
     }
     else if ([type isEqualToString:@"all"])
     {
-        self.input = [HYSafeKBInputView shareKBInputViewWithTypeAll];
+        self.input = [SafeKBInputView shareKBInputViewWithTypeAll];
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -37,7 +37,7 @@
 
 
 #pragma mark - SafeKBInputViewDelegate
-- (void)safeKBInputViewDidChangeText:(HYSafeKBInputView *)inputView
+- (void)safeKBInputViewDidChangeText:(SafeKBInputView *)inputView
 {
     NSString *encodeStr = [inputView.trueText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPasswordAllowedCharacterSet]];
     

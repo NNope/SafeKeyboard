@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD334A491D050C2A0091A163 /* del.png in Resources */ = {isa = PBXBuildFile; fileRef = AD334A431D050C2A0091A163 /* del.png */; };
+		AD334A4A1D050C2A0091A163 /* del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD334A441D050C2A0091A163 /* del@2x.png */; };
+		AD334A4B1D050C2A0091A163 /* hide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD334A451D050C2A0091A163 /* hide@2x.png */; };
+		AD334A4C1D050C2A0091A163 /* hide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD334A461D050C2A0091A163 /* hide@3x.png */; };
+		AD334A4E1D050C2A0091A163 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AD334A481D050C2A0091A163 /* logo.png */; };
 		ADE40DCA1CBB89500039B925 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE40DC91CBB89500039B925 /* main.m */; };
 		ADE40DCD1CBB89500039B925 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE40DCC1CBB89500039B925 /* AppDelegate.m */; };
 		ADE40DD01CBB89500039B925 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE40DCF1CBB89500039B925 /* ViewController.m */; };
@@ -23,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD334A431D050C2A0091A163 /* del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = del.png; sourceTree = "<group>"; };
+		AD334A441D050C2A0091A163 /* del@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "del@2x.png"; sourceTree = "<group>"; };
+		AD334A451D050C2A0091A163 /* hide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@2x.png"; sourceTree = "<group>"; };
+		AD334A461D050C2A0091A163 /* hide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@3x.png"; sourceTree = "<group>"; };
+		AD334A481D050C2A0091A163 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		ADE40DC51CBB89500039B925 /* WebKeyboardDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebKeyboardDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE40DC91CBB89500039B925 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADE40DCB1CBB89500039B925 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -106,6 +116,11 @@
 			isa = PBXGroup;
 			children = (
 				ADE40DE01CBB89EA0039B925 /* log1o.png */,
+				AD334A431D050C2A0091A163 /* del.png */,
+				AD334A441D050C2A0091A163 /* del@2x.png */,
+				AD334A451D050C2A0091A163 /* hide@2x.png */,
+				AD334A461D050C2A0091A163 /* hide@3x.png */,
+				AD334A481D050C2A0091A163 /* logo.png */,
 				ADE40DE11CBB89EA0039B925 /* SafeKBInputView */,
 				ADE40DE41CBB89EA0039B925 /* SafeKeyboard.h */,
 				ADE40DE51CBB89EA0039B925 /* SafeKeyboard.m */,
@@ -194,9 +209,14 @@
 			files = (
 				ADE40DD81CBB89510039B925 /* LaunchScreen.storyboard in Resources */,
 				ADE40DD51CBB89510039B925 /* Assets.xcassets in Resources */,
+				AD334A4E1D050C2A0091A163 /* logo.png in Resources */,
+				AD334A4C1D050C2A0091A163 /* hide@3x.png in Resources */,
+				AD334A4B1D050C2A0091A163 /* hide@2x.png in Resources */,
 				ADE40DFA1CBB8A7B0039B925 /* test.html in Resources */,
+				AD334A491D050C2A0091A163 /* del.png in Resources */,
 				ADE40DE81CBB89EA0039B925 /* log1o.png in Resources */,
 				ADE40DD31CBB89510039B925 /* Main.storyboard in Resources */,
+				AD334A4A1D050C2A0091A163 /* del@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
