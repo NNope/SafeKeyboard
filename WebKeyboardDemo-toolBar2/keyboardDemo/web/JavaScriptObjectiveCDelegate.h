@@ -11,6 +11,6 @@
 
 @protocol JavaScriptObjectiveCDelegate <JSExport>
 
-- (void)callKeyboard:(NSString *)textId Type:(NSString *)type;
+- (void)callKeyboard:(NSDictionary *)info;
 
 @end

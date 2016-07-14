@@ -11,18 +11,22 @@
 @implementation JsObjCModel
 
 
-- (void)callKeyboard:(NSString *)textId Type:(NSString *)type
+- (void)callKeyboard:(NSDictionary *)info
 {
-    self.textId = textId;
-    if ([type isEqualToString:@"abc"])
+    NSString *type = [info objectForKey:@"type"];
+    
+    // 默认带工具条切换键盘
+    if ([type isEqualToString:@"all"])
     {
-        self.input = [SafeKBInputView shareKBInputViewWithTypeABC];
+        self.input = [SafeKBInputView shareKBInputViewWithTypeAll];
     }
+    // 数字键盘
     else if ([type isEqualToString:@"num"])
     {
         self.input = [SafeKBInputView shareKBInputViewWithTypeNum];
     }
-    else if ([type isEqualToString:@"all"])
+    // 字母键盘
+    else if ([type isEqualToString:@"abc"])
     {
         self.input = [SafeKBInputView shareKBInputViewWithTypeAll];
     }
@@ -32,6 +36,7 @@
         [self.input show];
     });
     self.input.InputViewDelegate = self;
+    self.input.dicInfo = info;
 
 }
 

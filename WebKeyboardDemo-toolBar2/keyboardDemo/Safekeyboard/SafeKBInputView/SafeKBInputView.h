@@ -23,8 +23,11 @@
 @property (nonatomic, strong) SafeTextField *textField;
 @property (nonatomic, copy) NSMutableString *placeholderText;
 @property (nonatomic, copy) NSString *trueText;
-
 @property (nonatomic, weak) id<SafeKBInputViewDelegate> InputViewDelegate;
+
+// pwdKey pwdValue max
+@property (nonatomic, strong) NSDictionary *dicInfo;
+@property (nonatomic, copy) NSString *keyboardCallback;
 
 /**
  *  带字母 字符 数字切换工具条

@@ -834,7 +834,11 @@ static SafeKeyboard* keyboardViewInstance = nil;
     btn.layer.shadowOffset = CGSizeMake(0, 0.5);
     btn.layer.shadowOpacity = 0.8;
     btn.layer.shadowRadius = 0.8;
-    btn.clipsToBounds = NO;
+    //设定路径：与视图的边界相同
+    // 使用shadowPath 性能
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:btn.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(CHAR_CORNER, CHAR_CORNER)];
+    btn.layer.shadowPath = path.CGPath;//路径默认为 nil
+    //    btn.clipsToBounds = NO;
 }
 
 // 设置键盘符号
