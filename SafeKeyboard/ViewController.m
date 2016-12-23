@@ -34,6 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    SafeTextField *te = [[SafeTextField alloc]initWithkeyboardType:SafeKeyboardTypeABC];
+    te.frame = CGRectMake(100, 100, 50, 100);
+    te.backgroundColor = [UIColor redColor];
+    [self.view addSubview:te];
 }
 
 

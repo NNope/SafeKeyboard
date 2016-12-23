@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1351"
             endingLineNumber = "1351"
-            landmarkName = "-toolBarClick:"
-            landmarkType = "5">
+            landmarkName = "@implementation SafeKeyboard"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,7 +32,7 @@
             startingLineNumber = "509"
             endingLineNumber = "509"
             landmarkName = "-initSetup"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -48,7 +48,7 @@
             startingLineNumber = "1044"
             endingLineNumber = "1044"
             landmarkName = "-setUpOnlySymbol"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,7 +64,7 @@
             startingLineNumber = "984"
             endingLineNumber = "984"
             landmarkName = "-setUpOnlySymbol"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -80,39 +80,23 @@
             startingLineNumber = "868"
             endingLineNumber = "868"
             landmarkName = "-setCharactersText:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SafeKeyboard setCharactersText:]"
-                  moduleName = "WebKeyboardDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TXx/Documents/Lib+Demo/Framework+Lib/Mmmmmmy/SafeKeyboard/WebKeyboardDemo-toolBar2/keyboardDemo/Safekeyboard/SafeKeyboard.m"
-                  timestampString = "486894810.907011"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "868"
-                  endingLineNumber = "868"
-                  offsetFromSymbolStart = "161">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__34-[SafeKeyboard setCharactersText:]_block_invoke"
-                  moduleName = "WebKeyboardDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TXx/Documents/Lib+Demo/Framework+Lib/Mmmmmmy/SafeKeyboard/WebKeyboardDemo-toolBar2/keyboardDemo/Safekeyboard/SafeKeyboard.m"
-                  timestampString = "486894810.907274"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "868"
-                  endingLineNumber = "868"
-                  offsetFromSymbolStart = "63">
-               </Location>
-            </Locations>
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "keyboardDemo/ViewController.m"
+            timestampString = "498550384.927057"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-webViewDidFinishLoad:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
