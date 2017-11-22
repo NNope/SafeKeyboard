@@ -1,4 +1,4 @@
-###用于H5调用原生展示的自定义密码键盘。参考了这位大侠的仿招行的键盘，稍作了修改。[NHKeyboardPro](https://github.com/iFindTA/NHKeyboardPro)
+###用于H5调用原生展示的自定义密码键盘。参考了这位的仿招行的键盘，稍作了修改。[NHKeyboardPro](https://github.com/iFindTA/NHKeyboardPro)
 
 
 ####效果
